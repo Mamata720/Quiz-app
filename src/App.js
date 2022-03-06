@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import Intro from './Intro/Intro';
+import Quiz from './Quiz';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      TakeTest: true
+    }
+    this.handleClick = this.handleClick.bind
+      (this)
+
+  }
+  handleClick() {
+    this.setState({
+      TakeTest: false
+    })
+  }
+  render() {
+
+
+
+
+    return (
+
+
+      <div className="App">
+        
+        
+        {
+          this.state.TakeTest ?
+
+            (<div className="Intro">
+              <Intro clickevent={this.handleClick} />
+            </div>) :
+            (
+               <div className="Quiz">
+                 <Quiz />
+              </div>
+             ) 
+          }
+        
+      </div>
+
+    )
+  }
 }
 
-export default App;
+export default App
